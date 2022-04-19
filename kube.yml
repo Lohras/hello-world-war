@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata: 
+  name: dep
+spec: 
+  replicas: 7
+  strategy: 
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 2
+  selector:
+    matchLabels: 
+      app: dep-label
+  template:
+    metadata: 
+      name: dep-pod
+      labels:
+        app: dep-label
+    spec: 
+      containers:
+        - name: cont02
+          image: 
