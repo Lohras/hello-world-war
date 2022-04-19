@@ -13,13 +13,13 @@ pipeline{
       sh "pwd"
       sh "ls"
       sh "cd hello-world-war"
-      sh "docker build -t lohith1994/dockerrepo:1.0 ."
+      sh "docker build -t lohith1994/dockerrepo:2.0 ."
       }
       }
        stage('publish'){
                   steps{
                         sh "docker login -u lohith1994 -p Lohith@1994"
-                        sh "docker push lohith1994/dockerrepo:1.0"
+                        sh "docker push lohith1994/dockerrepo:2.0"
                   }
             }
             stage('deploy'){
