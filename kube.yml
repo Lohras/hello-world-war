@@ -20,4 +20,4 @@ spec:
     spec: 
       containers:
         - name: kube-cont01
-          image: lohith1994/dockerrepo:1.0
+          image: lohith1994/dockerrepo:2.0
