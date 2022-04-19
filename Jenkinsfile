@@ -29,6 +29,7 @@ pipeline{
                         //sh "docker pull lohith1994/dockerrepo:1.0"
                         //sh "docker rm -f docker1"
                         //sh "docker run -d -p 8040:8080 --name docker1 lohith1994/dockerrepo:1.0"
+                        sh "sudo su -"
                         sh "echo 'export KUBECONFIG=$HOME/admin.conf' >> $HOME/.bashrc"
                         sh "export KUBECONFIG=/etc/kubernetes/admin.conf"
                         sh "cp /etc/kubernetes/admin.conf $HOME/"
