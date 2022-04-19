@@ -1,6 +1,6 @@
 //CI-CD pipeline for building and deploying
 pipeline{
-      agent { label ('kube-master') }
+      agent { label 'kubernetes' }
       stages{
       stage('check out'){
                   steps{
