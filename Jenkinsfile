@@ -31,7 +31,7 @@ pipeline{
                         //sh "docker run -d -p 8040:8080 --name docker1 lohith1994/dockerrepo:1.0"
                         //sh "export KUBECONFIG=/etc/kubernetes/admin.conf"
                         sh "cp /etc/kubernetes/admin.conf $HOME/"
-                        sh "chown \${id -u}:\${id -g} $HOME/admin.conf"
+                        sh "chown root:root $HOME/admin.conf"
                         sh "export KUBECONFIG=$HOME/admin.conf"
                         sh "kubectl apply -f kube.yml"
                   }
