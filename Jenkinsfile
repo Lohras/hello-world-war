@@ -32,7 +32,7 @@ pipeline{
                         sh "echo 'export KUBECONFIG=$HOME/admin.conf' >> $HOME/.bashrc"
                         sh "export KUBECONFIG=/etc/kubernetes/admin.conf"
                         sh "cp /etc/kubernetes/admin.conf $HOME/"
-                        sh "sudo chown -R root:root $HOME/admin.conf"
+                        sh "sudo chown -S -R root:root $HOME/admin.conf"
                         sh "export KUBECONFIG=$HOME/admin.conf"
                         sh "kubectl apply -f kube.yml"
                   }
