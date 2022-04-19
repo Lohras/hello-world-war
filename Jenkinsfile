@@ -1,6 +1,6 @@
 //CI-CD pipeline for building and deploying
 pipeline{
-      agent any
+      agent { label ('kube-master') }
       stages{
       stage('check out'){
                   steps{
