@@ -25,7 +25,8 @@ pipeline{
                         sh "docker push 127801862567.dkr.ecr.us-east-1.amazonaws.com/tomcat:${BUILD_NUMBER}"
                         sh "pwd"
                         sh "ls"
-                        sh "sudo helm package --version ${BUILD_NUMBER} -d helm/ . "
+                        sh "sudo helm package --version ${BUILD_NUMBER} -d helm/tomcat . "
+                        sh "curl -ulohithrajeurs@gmail.com:Lohith@1994 -T tomcat-${BUILD_NUMBER}.tgz "https://lohith2022.jfrog.io/artifactory/tomcat-repo-helm/tomcat-${BUILD_NUMBER}.tgz"
                   }
             }
             // stage('deploy'){
