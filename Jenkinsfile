@@ -1,6 +1,6 @@
 //CI-CD pipeline for building and deploying
 // prequisites: jenkins up and running with 2 slaves : 1) docker-slave (docker/awscli/java should be installed in slave) 
-// 2) k8s-master slave ( in k8s, add user and run the commands ) 
+// 2) k8s-master slave ( in k8s, add user and run the commandsto give permission of folder .kube) 
 pipeline{
       agent { label 'java' }
       stages{
