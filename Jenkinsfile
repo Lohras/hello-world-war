@@ -1,36 +1,37 @@
 //CI-CD pipeline for building and deploying
 pipeline{
-      agent { label 'last1' }
+      agent { label 'java' }
       stages{
-      stage('check out'){
+            stage('check out'){
                   steps{
-                  sh "rm -rf hello-world-war"
-                  sh "git clone https://github.com/Lohras/hello-world-war.git"
-                  }
-                  }
-      stage('build'){
-      steps{
-      sh "pwd"
-      sh "ls"
-      sh "cd hello-world-war"
-      sh "docker build -t lohith1994/dockerrepo:1.0 ."
-      }
-      }
-       stage('publish'){
-                  steps{
-                        sh "docker login -u lohith1994 -p Lohith@1994"
-                        sh "docker push lohith1994/dockerrepo:1.0"
+                        sh "rm -rf hello-world-war"
+                        sh "git clone https://github.com/Lohras/hello-world-war.git"
                   }
             }
-            stage('deploy'){
-                  agent { label 'slave2' }
+            stage('build'){
                   steps{
+                        sh "pwd"
+                        sh "ls"
+                        sh "cd hello-world-war"
+                        sh "echo ${BUILD_NUMBER}"
+                        sh "docker build -t 127801862567.dkr.ecr.us-east-1.amazonaws.com/tomcat:${BUILD_NUMBER} ."
+                  }
+            }
+            stage('publish'){
+                  steps{
+                        sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 127801862567.dkr.ecr.us-east-1.amazonaws.com"
+                        sh "docker push 127801862567.dkr.ecr.us-east-1.amazonaws.com/tomcat:${BUILD_NUMBER}"
+                  }
+            }
+            // stage('deploy'){
+               //   agent { label 'slave2' }
+                 // steps{
                         //sh "docker login -u lohith1994 -p Lohith@1994"
                         //not necessary as it'll refer to docker hub is (default) & repo is public
-                        sh "docker pull lohith1994/dockerrepo:1.0"
-                        sh "docker rm -f docker1"
-                        sh "docker run -d -p 8040:8080 --name docker1 lohith1994/dockerrepo:1.0"
-                  }
-            }
+                   //     sh "docker pull lohith1994/dockerrepo:1.0"
+                     //   sh "docker rm -f docker1"
+                       // sh "docker run -d -p 8040:8080 --name docker1 lohith1994/dockerrepo:1.0"
+                 // }
+           // }
       }
       }
