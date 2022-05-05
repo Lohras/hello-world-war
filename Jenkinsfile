@@ -29,15 +29,13 @@ pipeline{
                         sh "curl -ulohithrajeurs@gmail.com:Lohith@1994 -T tomcat-${BUILD_NUMBER}.tgz \"https://lohith2022.jfrog.io/artifactory/tomcat-repo-helm/tomcat-${BUILD_NUMBER}.tgz\""
                   }
             }
-            // stage('deploy'){
-               //   agent { label 'slave2' }
-                 // steps{
-                        //sh "docker login -u lohith1994 -p Lohith@1994"
-                        //not necessary as it'll refer to docker hub is (default) & repo is public
-                   //     sh "docker pull lohith1994/dockerrepo:1.0"
-                     //   sh "docker rm -f docker1"
-                       // sh "docker run -d -p 8040:8080 --name docker1 lohith1994/dockerrepo:1.0"
-                 // }
-           // }
+            stage('deploy'){
+                 agent { label 'kubernetes' }
+                 steps{
+                        sh "helm repo add tomcat-repo-helm https://lohith2022.jfrog.io/artifactory/api/helm/tomcat-repo-helm --username lohithrajeurs@gmail.com --password Lohith@1994"
+                        sh "helm repo update"
+                        sh "helm upgrade --install tomcat tomcat-repo-helm/tomcat --set tag_name=${BUILD_NUMBER} --version ${BUILD_NUMBER}"
+                 }
+            }
       }
-      }
+}
