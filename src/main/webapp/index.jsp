@@ -1,9 +1,9 @@
 <html>
 <head>
-<title>Hello DevOps World!</title>
+<title>Hello This is CI-CD experiment!</title>
 </head>
 <body>
-	<h1>Hello DevOps World!</h1>
+	<h1>Hello This is CI-CD experiment!</h1>
 	<p>
 		It is now
 		<%= new java.util.Date() %></p>
