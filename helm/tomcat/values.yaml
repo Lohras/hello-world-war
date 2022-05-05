@@ -1,0 +1,7 @@
+app: tomcat-helm
+Replicas: 3
+image_name: sandy1791994/docwarimage
+tag_name: "1.0"
+Container_name: tomcat-container
+port: 8085
+target_port: 8080
