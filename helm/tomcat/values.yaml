@@ -1,7 +1,7 @@
 app: tomcat-helm
 Replicas: 3
-image_name: sandy1791994/docwarimage
-tag_name: "1.0"
+image_name: 127801862567.dkr.ecr.us-east-1.amazonaws.com/tomcat
+tag_name:
 Container_name: tomcat-container
 port: 8085
 target_port: 8080
