@@ -21,6 +21,9 @@ pipeline{
                   steps{
                         sh "aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 127801862567.dkr.ecr.us-east-1.amazonaws.com"
                         sh "docker push 127801862567.dkr.ecr.us-east-1.amazonaws.com/tomcat:${BUILD_NUMBER}"
+                        sh "pwd"
+                        sh "ls"
+                        sh "sudo helm package --version ${BUILD_NUMBER} -d helm/ . "
                   }
             }
             // stage('deploy'){
