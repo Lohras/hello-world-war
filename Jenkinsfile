@@ -26,7 +26,7 @@ pipeline{
                         sh "pwd"
                         sh "ls"
                         sh "sudo helm package --version ${BUILD_NUMBER} -d helm/tomcat . "
-                        sh "curl -ulohithrajeurs@gmail.com:Lohith@1994 -T tomcat-${BUILD_NUMBER}.tgz "https://lohith2022.jfrog.io/artifactory/tomcat-repo-helm/tomcat-${BUILD_NUMBER}.tgz"
+                        sh "curl -ulohithrajeurs@gmail.com:Lohith@1994 -T tomcat-${BUILD_NUMBER}.tgz "https://lohith2022.jfrog.io/artifactory/tomcat-repo-helm/tomcat-${BUILD_NUMBER}.tgz" "
                   }
             }
             // stage('deploy'){
